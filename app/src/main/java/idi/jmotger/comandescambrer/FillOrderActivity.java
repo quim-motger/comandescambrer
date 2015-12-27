@@ -26,7 +26,7 @@ public class FillOrderActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                loadInfo();
             }
         });
 
@@ -53,6 +53,11 @@ public class FillOrderActivity extends AppCompatActivity {
     public void loadDesserts(View view) {
         Intent intent = new Intent(this, LoadProductsOrder.class);
         intent.putExtra("TYPE", "DESSERT");
+        startActivity(intent);
+    }
+
+    public void loadInfo() {
+        Intent intent = new Intent(this, OrderInfo.class);
         startActivity(intent);
     }
 

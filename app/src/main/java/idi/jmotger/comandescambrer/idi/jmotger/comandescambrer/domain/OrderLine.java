@@ -29,4 +29,14 @@ public class OrderLine {
         return amount;
     }
 
+    public double getTotal() {
+        return (double)amount * p.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        double d = getTotal();
+        return p.getName() + ";" + "x " + amount + " = " + d + "€";
+    }
+
 }

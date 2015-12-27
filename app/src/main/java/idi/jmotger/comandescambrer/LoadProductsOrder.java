@@ -1,5 +1,6 @@
 package idi.jmotger.comandescambrer;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -18,28 +19,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
+import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.Order;
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.OrderLine;
 
 public class LoadProductsOrder extends AppCompatActivity {
 
     ProductAdapter adap;
+    Order o;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        o = NewOrderActivity.currentOrder;
         String type = getIntent().getExtras().getString("TYPE");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_firsts);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         adap = new ProductAdapter(this, type);
@@ -49,7 +45,7 @@ public class LoadProductsOrder extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                NewOrderActivity.currentOrder.addProduct(adap.getItem(position));
+                o.addProduct(adap.getItem(position));
                 Toast.makeText(getApplicationContext(), "Afegit " + adap.getItem(position).getName() + " a la comanda", Toast.LENGTH_SHORT).show();
             }
         });
