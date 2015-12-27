@@ -12,9 +12,14 @@
     tools:context=".LoadProductsOrder"
     tools:showIn="@layout/activity_load_firsts">
 
-    <ImageView
-        android:id="@+id/imageV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <GridView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="120dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:gravity="center"
+        android:numColumns="auto_fit" />
 
 </RelativeLayout>

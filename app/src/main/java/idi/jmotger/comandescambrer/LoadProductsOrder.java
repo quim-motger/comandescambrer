@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,19 +23,23 @@ public class LoadProductsOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         String type = getIntent().getExtras().getString("TYPE");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_load_firsts);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        DataBaseSQLite d = new DataBaseSQLite(this);
-        SQLiteDatabase db = d.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM PRODUCT WHERE TYPE = ?", new String[]{type});
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        while (c.moveToNext()) {
-            Log.d("LOAD PRODUCTS", "Loading another product");
-            byte[] image = c.getBlob(3);
-            Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
-            ImageView v = (ImageView)findViewById(R.id.imageV);
-            v.setImageBitmap(bmp);
-
-        }
+        GridView gridView = (GridView) findViewById(R.id.grid);
+        gridView.setAdapter(new ProductAdapter(this, type));
 
         switch(type) {
             case "FIRST":
@@ -52,20 +57,6 @@ public class LoadProductsOrder extends AppCompatActivity {
             default:
                 break;
         }
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_load_firsts);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }
