@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
+import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.OrderLine;
 
 public class LoadProductsOrder extends AppCompatActivity {
 
@@ -36,8 +37,7 @@ public class LoadProductsOrder extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //TODO Show current ticket
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,6 +49,7 @@ public class LoadProductsOrder extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
+                NewOrderActivity.currentOrder.addProduct(adap.getItem(position));
                 Toast.makeText(getApplicationContext(), "Afegit 1 " + adap.getItem(position).getName() + " a la comanda", Toast.LENGTH_SHORT).show();
             }
         });

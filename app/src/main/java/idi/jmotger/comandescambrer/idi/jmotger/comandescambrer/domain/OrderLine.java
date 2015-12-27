@@ -21,4 +21,12 @@ public class OrderLine {
         this.amount -= 1;
     }
 
+    public String getProductName() {
+        return p.getName();
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
 }

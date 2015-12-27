@@ -29,6 +29,10 @@ public class Order {
         else orderLines.get(p).incrAmount();
     }
 
+    public HashMap<Product, OrderLine> getOrderLines() {
+        return orderLines;
+    }
+
     public String getDate() {
         return date;
     }

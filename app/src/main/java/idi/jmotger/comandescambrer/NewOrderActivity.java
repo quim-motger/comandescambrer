@@ -20,10 +20,13 @@ import java.util.Calendar;
 
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.TimeDialog;
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
+import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.Order;
 
 public class NewOrderActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
+
+    public static Order currentOrder;
 
     public void onStart() {
         super.onStart();
@@ -98,6 +101,8 @@ public class NewOrderActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(getApplicationContext(), "Comanda iniciada el dia " + d + " a les " + t + " a la taula " + table, Toast.LENGTH_SHORT);
         toast.show();
+
+        currentOrder = new Order(d, t, Integer.parseInt(table));
 
         Intent intent = new Intent(this, FillOrderActivity.class);
         intent.putExtra("DATE", d);
