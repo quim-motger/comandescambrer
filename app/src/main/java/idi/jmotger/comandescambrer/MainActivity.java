@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

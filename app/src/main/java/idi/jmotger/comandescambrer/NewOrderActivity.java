@@ -1,22 +1,29 @@
 package idi.jmotger.comandescambrer;
 
 import android.app.FragmentTransaction;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.TimeDialog;
+import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
 
 public class NewOrderActivity extends AppCompatActivity {
+
+    private static final String TAG = "MyActivity";
 
     public void onStart() {
         super.onStart();
@@ -82,7 +89,32 @@ public class NewOrderActivity extends AppCompatActivity {
     }
 
     public void startOrder(View view) {
+        EditText date = (EditText)findViewById(R.id.textdate);
+        EditText time = (EditText)findViewById(R.id.texttime);
+        Spinner spinner = (Spinner) findViewById(R.id.table_spinner);
+        String d = date.getText().toString();
+        String t = time.getText().toString();
+        String table = spinner.getSelectedItem().toString();
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Comanda iniciada el dia " + d + " a les " + t + " a la taula " + table, Toast.LENGTH_SHORT);
+        toast.show();
+
+        DataBaseSQLite sqLite = new DataBaseSQLite(getBaseContext());
+        SQLiteDatabase database = sqLite.getWritableDatabase();
+        Log.v("NEW ORDER", "Construim nova comanda");
+        //Construïm la nova comanda
+        ContentValues values = new ContentValues();
+        values.put("ORDER_ID", table + "#" + d + "#" + t);
+        values.put("DATE", d);
+        values.put("TIME", t);
+        values.put("N_TABLE", Integer.parseInt(table));
+
+        //Guardem la nova comanda
+        long comanda;
+        comanda = database.insert("ORDERS", null, values);
+
         Intent intent = new Intent(this, FillOrderActivity.class);
+        intent.putExtra("ORDER_ID", table + "#" + d + "#" + t);
         startActivity(intent);
     }
 

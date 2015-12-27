@@ -12,4 +12,10 @@
     tools:context="idi.jmotger.comandescambrer.FillOrderActivity"
     tools:showIn="@layout/activity_fill_order">
 
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+
 </RelativeLayout>

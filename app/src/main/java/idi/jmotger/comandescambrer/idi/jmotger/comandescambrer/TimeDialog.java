@@ -1,12 +1,10 @@
 package idi.jmotger.comandescambrer.idi.jmotger.comandescambrer;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
