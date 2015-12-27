@@ -37,7 +37,7 @@ public class LoadProductsOrder extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO Show current ticket
+
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -50,7 +50,7 @@ public class LoadProductsOrder extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 NewOrderActivity.currentOrder.addProduct(adap.getItem(position));
-                Toast.makeText(getApplicationContext(), "Afegit 1 " + adap.getItem(position).getName() + " a la comanda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Afegit " + adap.getItem(position).getName() + " a la comanda", Toast.LENGTH_SHORT).show();
             }
         });
 
