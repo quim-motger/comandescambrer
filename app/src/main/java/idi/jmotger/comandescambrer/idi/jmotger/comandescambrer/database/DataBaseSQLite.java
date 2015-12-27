@@ -189,6 +189,101 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
         db.insert("PRODUCT", null, values);
         Log.d("DB", "Sorbete inserted in database");
 
+        //ENTREMESOS
+        Log.d("DB", "Inserting entremesos");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.entremesos);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] entremesos = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Entremesos");
+        values.put("PRICE", "6.10");
+        values.put("TYPE", "FIRST");
+        values.put("IMAGE", entremesos);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Entremesos inserted in database");
+
+        //LASAGNA
+        Log.d("DB", "Inserting lassanya");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.lasagna);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] lasagna = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Lasagna de carn");
+        values.put("PRICE", "7.20");
+        values.put("TYPE", "FIRST");
+        values.put("IMAGE", lasagna);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Lasagna inserted in database");
+
+        //MUSCLOS
+        Log.d("DB", "Inserting musclos");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.musclos);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] musclos = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Musclos a la marinera");
+        values.put("PRICE", "8.15");
+        values.put("TYPE", "FIRST");
+        values.put("IMAGE", musclos);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Musclos inserted in database");
+
+        //RISOTTO
+        Log.d("DB", "Inserting risotto");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.risotto);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] risotto = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Risotto");
+        values.put("PRICE", "7.80");
+        values.put("TYPE", "FIRST");
+        values.put("IMAGE", risotto);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Risotto inserted in database");
+
+        //SOPA
+        Log.d("DB", "Inserting sopa");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.sopa);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] sopa = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Sopa");
+        values.put("PRICE", "5.65");
+        values.put("TYPE", "FIRST");
+        values.put("IMAGE", sopa);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Sopa inserted in database");
+
 
     }
 

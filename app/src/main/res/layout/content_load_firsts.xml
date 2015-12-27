@@ -20,6 +20,7 @@
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:gravity="center"
-        android:numColumns="auto_fit" />
+        android:numColumns="auto_fit"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>

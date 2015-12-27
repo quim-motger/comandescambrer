@@ -11,13 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
 
 public class LoadProductsOrder extends AppCompatActivity {
+
+    ProductAdapter adap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,16 @@ public class LoadProductsOrder extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        adap = new ProductAdapter(this, type);
         GridView gridView = (GridView) findViewById(R.id.grid);
-        gridView.setAdapter(new ProductAdapter(this, type));
+        gridView.setAdapter(adap);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(getApplicationContext(), "Afegit 1 " + adap.getItem(position).getName() + " a la comanda", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         switch(type) {
             case "FIRST":
