@@ -17,9 +17,11 @@ public class OrderLine {
         this.amount += 1;
     }
 
-    public void decrAmount() {
-        this.amount -= 1;
+    public void setAmount(int n) {
+        this.amount = n;
     }
+
+    public Product getProduct() { return this.p;}
 
     public String getProductName() {
         return p.getName();
