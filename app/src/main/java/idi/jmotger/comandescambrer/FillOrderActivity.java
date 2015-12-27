@@ -1,18 +1,11 @@
 package idi.jmotger.comandescambrer;
 
-import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class FillOrderActivity extends AppCompatActivity {
 
@@ -29,11 +22,34 @@ public class FillOrderActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
 
+    }
+
+    public void loadFirsts(View view) {
+        Intent intent = new Intent(this, LoadProductsOrder.class);
+        intent.putExtra("TYPE", "FIRST");
+        startActivity(intent);
+    }
+
+    public void loadSeconds(View view) {
+        Intent intent = new Intent(this, LoadProductsOrder.class);
+        intent.putExtra("TYPE", "SECOND");
+        startActivity(intent);
+    }
+
+    public void loadDrinks(View view) {
+        Intent intent = new Intent(this, LoadProductsOrder.class);
+        intent.putExtra("TYPE", "DRINK");
+        startActivity(intent);
+    }
+
+    public void loadDesserts(View view) {
+        Intent intent = new Intent(this, LoadProductsOrder.class);
+        intent.putExtra("TYPE", "DESSERT");
+        startActivity(intent);
     }
 
 }

@@ -99,7 +99,7 @@ public class NewOrderActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(getApplicationContext(), "Comanda iniciada el dia " + d + " a les " + t + " a la taula " + table, Toast.LENGTH_SHORT);
         toast.show();
 
-        DataBaseSQLite sqLite = new DataBaseSQLite(getBaseContext());
+      /*  DataBaseSQLite sqLite = new DataBaseSQLite(getBaseContext());
         SQLiteDatabase database = sqLite.getWritableDatabase();
         Log.v("NEW ORDER", "Construim nova comanda");
         //Construïm la nova comanda
@@ -111,10 +111,12 @@ public class NewOrderActivity extends AppCompatActivity {
 
         //Guardem la nova comanda
         long comanda;
-        comanda = database.insert("ORDERS", null, values);
+        comanda = database.insert("ORDERS", null, values);*/
 
         Intent intent = new Intent(this, FillOrderActivity.class);
-        intent.putExtra("ORDER_ID", table + "#" + d + "#" + t);
+        intent.putExtra("DATE", d);
+        intent.putExtra("TIME", t);
+        intent.putExtra("N_TABLE", Integer.parseInt(table));
         startActivity(intent);
     }
 

@@ -40,5 +40,6 @@
     </string-array>
     <string name="title_activity_fill_order">Nova comanda</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_load_firsts">Nova comanda</string>
 
 </resources>
