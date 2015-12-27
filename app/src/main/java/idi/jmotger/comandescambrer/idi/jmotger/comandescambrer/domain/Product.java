@@ -10,13 +10,13 @@ public class Product {
     String name;
     String type;
     double price;
-    Bitmap mp;
+    byte[] model;
 
-    public Product(String name, String type, double price, Bitmap mp) {
+    public Product(String name, String type, double price, byte[] model) {
         this.name = name;
         this.type = type;
         this.price = price;
-        this.mp = mp;
+        this.model = model;
     }
 
     public String getName() {
@@ -35,8 +35,8 @@ public class Product {
         return this.price;
     }
 
-    public Bitmap getImage() {
-        return this.mp;
+    public byte[] getImage() {
+        return this.model;
     }
 
 }

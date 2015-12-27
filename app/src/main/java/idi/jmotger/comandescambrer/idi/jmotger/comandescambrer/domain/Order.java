@@ -11,14 +11,17 @@ public class Order {
 
     Calendar date;
     int table;
-    HashMap<String, OrderLine> orderLines;
+    double total;
+    HashMap<Product, OrderLine> orderLines;
 
     public Order(Calendar date, int table) {
         this.date = date;
         this.table = table;
+        this.total = 0.0;
+        orderLines = new HashMap<>();
     }
 
-    public void addProduct(String product) {
+    public void addProduct(Product p) {
         //TODO add new product to order
     }
 

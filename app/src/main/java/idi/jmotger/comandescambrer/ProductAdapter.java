@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.Product;
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.ProductRepository;
 
@@ -51,12 +53,12 @@ public class ProductAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.grid_item, viewGroup, false);
         }
 
-        ImageView imagenCoche = (ImageView) view.findViewById(R.id.image_product);
-        TextView nombreCoche = (TextView) view.findViewById(R.id.label_product);
+        ImageView imageProduct = (ImageView) view.findViewById(R.id.image_product);
+        TextView nameProduct = (TextView) view.findViewById(R.id.label_product);
 
         final Product item = getItem(position);
-        imagenCoche.setImageBitmap(item.getImage());
-        nombreCoche.setText(item.getName() + " (" + item.getPrice() + "€)");
+        Glide.with(imageProduct.getContext()).load(item.getImage()).into(imageProduct);
+        nameProduct.setText(item.getName() + " (" + item.getPrice() + "€)");
 
         return view;
     }

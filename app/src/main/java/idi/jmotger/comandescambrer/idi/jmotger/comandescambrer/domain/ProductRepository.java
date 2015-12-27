@@ -36,7 +36,7 @@ public class ProductRepository {
             if (image == null) Log.e("LOAD PRODUCTS", "Product image not loaded correctly" + image.length);
             Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
 
-            products.add(new Product(c.getString(0), c.getString(2), c.getDouble(1), bmp));
+            products.add(new Product(c.getString(0), c.getString(2), c.getDouble(1), image));
 
         }
 
