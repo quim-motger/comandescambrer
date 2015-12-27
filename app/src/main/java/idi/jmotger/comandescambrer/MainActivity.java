@@ -59,11 +59,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void fillOrder(View view) {
-        Intent intent = new Intent(this, TodayCashActivity.class);
-        startActivity(intent);
-    }
-
     /**
      * Called when the user clicks the "New order" button
      * @param view

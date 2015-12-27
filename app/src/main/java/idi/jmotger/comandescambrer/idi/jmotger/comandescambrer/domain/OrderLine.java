@@ -10,7 +10,7 @@ public class OrderLine {
 
     public OrderLine(Product p) {
         this.p = p;
-        amount = 0;
+        amount = 1;
     }
 
     public void incrAmount() {
