@@ -38,11 +38,21 @@
         <item>19</item>
         <item>20</item>
     </string-array>
+
+    <string-array name="product_type">
+        <item>Primer</item>
+        <item>Segon</item>
+        <item>Beguda</item>
+        <item>Postre</item>
+    </string-array>
+
     <string name="title_activity_fill_order">Nova comanda</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_load_firsts">Nova comanda</string>
     <string name="title_activity_order_info">Nova comanda - Resum</string>
     <string name="title_activity_order_info_from_product">OrderInfoFromProduct</string>
     <string name="title_activity_order_info_read">OrderInfoRead</string>
+    <string name="title_activity_new_product">NewProductActivity</string>
+    <string name="title_activity_stock_load_products">StockLoadProducts</string>
 
 </resources>

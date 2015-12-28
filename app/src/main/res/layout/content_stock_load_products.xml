@@ -9,18 +9,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="idi.jmotger.comandescambrer.StockActivity"
-    tools:showIn="@layout/activity_stock">
+    tools:context="idi.jmotger.comandescambrer.StockLoadProducts"
+    tools:showIn="@layout/activity_stock_load_products">
 
     <GridView
-        android:id="@+id/gridButtonsStock"
+        android:id="@+id/gridProducts"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:columnWidth="120dp"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:gravity="center"
         android:numColumns="auto_fit"
-        android:layout_marginBottom="6dp" />
+        android:layout_marginBottom="6dp"/>
 
 </RelativeLayout>

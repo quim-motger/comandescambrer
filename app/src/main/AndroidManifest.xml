@@ -90,6 +90,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="idi.jmotger.comandescambrer.TodayCashActivity" />
         </activity>
+        <activity
+            android:name=".NewProductActivity"
+            android:label="@string/title_activity_new_product"
+            android:parentActivityName=".StockActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="idi.jmotger.comandescambrer.StockActivity" />
+        </activity>
+        <activity
+            android:name=".StockLoadProducts"
+            android:label="@string/title_activity_stock_load_products"
+            android:parentActivityName=".StockActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="idi.jmotger.comandescambrer.StockActivity" />
+        </activity>
     </application>
 
 </manifest>
