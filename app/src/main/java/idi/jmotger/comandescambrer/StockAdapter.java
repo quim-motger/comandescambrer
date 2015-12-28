@@ -1,6 +1,8 @@
 package idi.jmotger.comandescambrer;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
-import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
-import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.Product;
-import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.ProductRepository;
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.Stock;
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.StockRepository;
 
@@ -60,8 +57,9 @@ public class StockAdapter extends BaseAdapter {
         TextView nameProduct = (TextView) view.findViewById(R.id.label_product);
 
         final Stock item = getItem(position);
-        Glide.with(imageProduct.getContext()).load(item.getImage()).into(imageProduct);
 
+        Bitmap bitmap = BitmapFactory.decodeByteArray(item.getImage(), 0, item.getImage().length);
+        imageProduct.setImageBitmap(bitmap);
         nameProduct.setText(item.getProduct().getName() + " (" + item.getUnits() + "u)");
 
         return view;

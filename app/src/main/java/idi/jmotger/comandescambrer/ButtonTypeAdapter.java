@@ -11,15 +11,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.Product;
-import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.ProductRepository;
 
 /**
  * Created by jmotger on 27/12/15.
