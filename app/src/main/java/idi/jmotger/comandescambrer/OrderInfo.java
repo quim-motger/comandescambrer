@@ -92,9 +92,9 @@ public class OrderInfo extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 int n = Integer.parseInt(input.getText().toString());
                 if (n == 0)
-                    NewOrderActivity.currentOrder.getOrderLines().remove(currentOrderLine.getProduct());
+                    NewOrderActivity.currentOrder.getOrderLines().remove(currentOrderLine.getProduct().getName());
                 else {
-                    NewOrderActivity.currentOrder.getOrderLines().get(currentOrderLine.getProduct()).setAmount(n);
+                    NewOrderActivity.currentOrder.getOrderLines().get(currentOrderLine.getProduct().getName()).setAmount(n);
                 }
                 reloadInfo();
             }
