@@ -1,6 +1,7 @@
 package idi.jmotger.comandescambrer;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,10 +23,11 @@ public class StockLoadProducts extends AppCompatActivity {
 
     StockAdapter adap;
     Toast t;
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String type = getIntent().getExtras().getString("TYPE");
+        type = getIntent().getExtras().getString("TYPE");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_load_products);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -63,7 +65,10 @@ public class StockLoadProducts extends AppCompatActivity {
         }
     }
 
+    String editProduct;
+
     protected void editStock(String name) {
+        editProduct = name;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Quantitat del producte " + name);
         final EditText input = new EditText(this);
@@ -85,7 +90,15 @@ public class StockLoadProducts extends AppCompatActivity {
                 if (input.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "No s'ha modificat la informació (introdueixi algun valor)", Toast.LENGTH_SHORT).show();
                 } else {
-                    //TODO edit stock value
+
+                    DataBaseSQLite d = new DataBaseSQLite(getApplicationContext());
+                    SQLiteDatabase db = d.getWritableDatabase();
+
+                    String units = input.getText().toString();
+
+                    db.execSQL("UPDATE STOCK SET UNITS = ? WHERE PRODUCT_NAME = ?", new String[]{units, editProduct});
+
+                    loadInfo();
                 }
             }
         });
@@ -95,8 +108,26 @@ public class StockLoadProducts extends AppCompatActivity {
                 dialog.cancel();
             }
         });
+        builder.setNeutralButton("Elimina", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DataBaseSQLite d = new DataBaseSQLite(getApplicationContext());
+                SQLiteDatabase db = d.getWritableDatabase();
+
+                db.execSQL("DELETE FROM PRODUCT WHERE NAME = ?", new String[]{editProduct});
+                db.execSQL("DELETE FROM STOCK WHERE PRODUCT_NAME = ?", new String[]{editProduct});
+                loadInfo();
+
+                Toast.makeText(getApplicationContext(), "Producte eliminat", Toast.LENGTH_SHORT).show();
+            }
+        });
         builder.show();
         input.setSelection(0, input.getText().length());
     }
 
+    protected void loadInfo() {
+        adap = new StockAdapter(this, type);
+        GridView gridView = (GridView) findViewById(R.id.gridProducts);
+        gridView.setAdapter(adap);
+    }
 }
