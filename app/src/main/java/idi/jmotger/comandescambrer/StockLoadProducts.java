@@ -70,7 +70,7 @@ public class StockLoadProducts extends AppCompatActivity {
     protected void editStock(String name) {
         editProduct = name;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Producte " + name);
+        builder.setTitle(name);
         final EditText input = new EditText(this);
 
         DataBaseSQLite d = new DataBaseSQLite(getApplicationContext());
