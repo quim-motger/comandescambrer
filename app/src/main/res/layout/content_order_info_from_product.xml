@@ -9,18 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".LoadProductsOrder"
-    tools:showIn="@layout/activity_load_firsts">
+    tools:context="idi.jmotger.comandescambrer.OrderInfo"
+    tools:showIn="@layout/activity_order_info">
 
-    <GridView
-        android:id="@+id/grid"
+    <ListView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="120dp"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:gravity="center"
-        android:numColumns="auto_fit"
-        android:layout_marginBottom="6dp"/>
+        android:id="@+id/llista"/>
 
 </RelativeLayout>

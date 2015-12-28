@@ -50,12 +50,21 @@ public class Order {
         return table;
     }
 
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
+
     public double getTotal() {
         double total = 0;
         for (OrderLine ol : orderLines.values()) {
             total += ol.getTotal();
         }
-        return total;
+        return round(total, 2);
     }
 
     public void setTotal(double total) {
@@ -64,7 +73,8 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Taula " + table + " (" + time + ");" + total + "€";
+        double t = round(total, 2);
+        return "Taula " + table + " (" + time + ");" + t + "€";
     }
 
 }

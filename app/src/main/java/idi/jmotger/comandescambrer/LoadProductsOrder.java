@@ -71,4 +71,9 @@ public class LoadProductsOrder extends AppCompatActivity {
         }
     }
 
+    public void loadInfo() {
+        Intent intent = new Intent(this, OrderInfoFromProduct.class);
+        startActivity(intent);
+    }
+
 }
