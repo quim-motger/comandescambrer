@@ -48,7 +48,7 @@ public class NewOrderActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    DateDialog dialog = new DateDialog(v);
+                    DateDialog dialog = DateDialog.newInstance(v);
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     dialog.show(ft, "DatePicker");
                 }
@@ -69,7 +69,7 @@ public class NewOrderActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    TimeDialog dialog = new TimeDialog(v);
+                    TimeDialog dialog = TimeDialog.newInstance(v);
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     dialog.show(ft, "TimePicker");
                 }

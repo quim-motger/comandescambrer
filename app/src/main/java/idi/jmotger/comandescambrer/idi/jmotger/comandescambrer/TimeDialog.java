@@ -17,7 +17,17 @@ public class TimeDialog extends DialogFragment implements TimePickerDialog.OnTim
 
     EditText textTime;
 
-    public TimeDialog (View view) {
+    public TimeDialog() {
+
+    }
+
+    public static TimeDialog newInstance(View view) {
+        TimeDialog d = new TimeDialog();
+        d.setView(view);
+        return d;
+    }
+
+    public void setView(View view) {
         textTime = (EditText)view;
     }
 

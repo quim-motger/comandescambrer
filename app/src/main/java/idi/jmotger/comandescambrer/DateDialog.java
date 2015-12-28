@@ -17,7 +17,17 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
 
     EditText textDate;
 
-    public DateDialog (View view) {
+    public DateDialog() {
+
+    }
+
+    public static DateDialog newInstance(View view) {
+        DateDialog d = new DateDialog();
+        d.setView(view);
+        return d;
+    }
+
+    public void setView(View view) {
         textDate = (EditText)view;
     }
 
