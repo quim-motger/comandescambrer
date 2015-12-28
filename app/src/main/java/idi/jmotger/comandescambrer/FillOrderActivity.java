@@ -119,7 +119,6 @@ public class FillOrderActivity extends AppCompatActivity {
         builder.setTitle("Quantitat");
         final EditText input = new EditText(this);
         input.setText(String.valueOf(ol.getAmount()));
-        input.setSelection(0, input.getText().length());
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
         builder.setView(input);
         builder.setPositiveButton("Modifica", new DialogInterface.OnClickListener() {
@@ -146,6 +145,7 @@ public class FillOrderActivity extends AppCompatActivity {
             }
         });
         builder.show();
+        input.setSelection(0, input.getText().length());
     }
 
     protected void loadMain() {

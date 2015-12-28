@@ -36,6 +36,7 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS ORDERS (ORDER_ID TEXT PRIMARY KEY, DATE TEXT, TIME TEXT, N_TABLE INTEGER);");
         db.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT (NAME TEXT, PRICE REAL, TYPE TEXT, IMAGE BLOB, PRIMARY KEY (NAME));");
         db.execSQL("CREATE TABLE IF NOT EXISTS LINE_ORDER (ORDER_ID INTEGER, PRODUCT_NAME TEXT, QTT INTEGER, TOTAL REAL, PREU_UNIT REAL, PRIMARY KEY (ORDER_ID, PRODUCT_NAME));");
+        db.execSQL("CREATE TABLE IF NOT EXISTS STOCK(PRODUCT_NAME TEXT, UNITS INTEGER, PRIMARY KEY (PRODUCT_NAME));");
 
         //AIGUA
         Log.d("DB", "Inserting aigua");
@@ -105,13 +106,13 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
         Log.d("DB", "Image loaded");
 
         values = new ContentValues();
-        values.put("NAME", "Bacalla al pil pil");
+        values.put("NAME", "Bacallà al pil pil");
         values.put("PRICE", "8.90");
         values.put("TYPE", "SECOND");
         values.put("IMAGE", bacalla);
 
         db.insert("PRODUCT", null, values);
-        Log.d("DB", "Bacalla inserted in database");
+        Log.d("DB", "Bacallà inserted in database");
 
         //ENTRECOT
         Log.d("DB", "Inserting entrecot");
@@ -162,13 +163,13 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
         Log.d("DB", "Image loaded");
 
         values = new ContentValues();
-        values.put("NAME", "Pastis de formatge");
+        values.put("NAME", "Pastís de formatge");
         values.put("PRICE", "3.50");
         values.put("TYPE", "DESSERT");
         values.put("IMAGE", pastis);
 
         db.insert("PRODUCT", null, values);
-        Log.d("DB", "Pastis inserted in database");
+        Log.d("DB", "Pastís inserted in database");
 
         //SORBETE
         Log.d("DB", "Inserting sorbete");
@@ -181,7 +182,7 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
         Log.d("DB", "Image loaded");
 
         values = new ContentValues();
-        values.put("NAME", "Sorbete de llimona");
+        values.put("NAME", "Sorbet de llimona");
         values.put("PRICE", "3.20");
         values.put("TYPE", "DESSERT");
         values.put("IMAGE", sorbete);
@@ -418,6 +419,108 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
         Log.d("DB", "Sipia inserted in database");
 
 
+        //STOCK
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Aigua");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Vi");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Amanida");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Bacallà al pil pil");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Entrecot");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Macarrons a la bolonyesa");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Pastís de formatge");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Sorbet de llimona");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Entremesos");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Lasagna de carn");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Musclos a la marinera");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Risotto");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Sopa");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Crema de verdures");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Albergínia farcida");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Cava");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Coca-cola");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Crepe de xocolata");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Macedònia");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        values = new ContentValues();
+        values.put("PRODUCT_NAME", "Sípia amb patates");
+        values.put("UNITS", 10);
+        db.insert("STOCK", null, values);
+
+        Log.d("DB", "EXITO");
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
