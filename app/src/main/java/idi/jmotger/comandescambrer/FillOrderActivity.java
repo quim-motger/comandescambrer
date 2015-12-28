@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -128,11 +129,21 @@ public class FillOrderActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "No s'ha modificat la informació (introdueixi algun valor)", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
+                    DataBaseSQLite d = new DataBaseSQLite(getApplicationContext());
+                    SQLiteDatabase db = d.getReadableDatabase();
+
+                    Cursor c = db.rawQuery("SELECT * FROM STOCK WHERE PRODUCT_NAME = ?", new String[]{currentOrderLine.getProductName()});
                     int n = Integer.parseInt(input.getText().toString());
                     if (n == 0)
                         NewOrderActivity.currentOrder.getOrderLines().remove(currentOrderLine.getProductName());
                     else {
-                        NewOrderActivity.currentOrder.getOrderLines().get(currentOrderLine.getProductName()).setAmount(n);
+                        if (c.moveToNext()) {
+                            if (c.getInt(1) < n)
+                                Toast.makeText(getApplicationContext(), "No hi ha suficients unitats del producte " + currentOrderLine.getProductName() + " (disponibles " + c.getInt(1) + ")", Toast.LENGTH_SHORT).show();
+                            else {
+                                NewOrderActivity.currentOrder.getOrderLines().get(currentOrderLine.getProductName()).setAmount(n);
+                            }
+                        }
                     }
                     reloadInfo();
                 }
@@ -208,6 +219,12 @@ public class FillOrderActivity extends AppCompatActivity {
             values.put("PREU_UNIT", ol.getPreuUnit());
             Log.d("SAVE_ORDER", "Guardem instància de " + ol.getProductName());
             db.insert("LINE_ORDER", null, values);
+
+            Cursor c = db.rawQuery("SELECT * FROM STOCK WHERE PRODUCT_NAME = ?", new String[] {ol.getProductName()});
+            if (c.moveToNext()) {
+                int units = c.getInt(1) - ol.getAmount();
+                db.execSQL("UPDATE STOCK SET UNITS = ? WHERE PRODUCT_NAME = ?", new String[]{String.valueOf(units), ol.getProductName()});
+            }
         }
         Log.d("SAVE_ORDER", "Registrament de dades satisfactori");
     }
