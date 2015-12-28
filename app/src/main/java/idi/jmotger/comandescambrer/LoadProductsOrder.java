@@ -45,11 +45,30 @@ public class LoadProductsOrder extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                NewOrderActivity.currentOrder.addProduct(adap.getItem(position));
-                t.setText("Hi ha " + NewOrderActivity.currentOrder.getOrderLines().get(adap.getItem(position).getName()).getAmount() +
-                        " unitat/s del producte " + adap.getItem(position).getName() +
-                        " a la comanda");
-                t.show();
+                int qtt = 0;
+                for (OrderLine ol : NewOrderActivity.currentOrder.getOrderLines().values()) {
+                    if (ol.getProductName().equals(adap.getItem(position).getName())) {
+                        qtt = ol.getAmount();
+                    }
+                }
+
+                DataBaseSQLite d = new DataBaseSQLite(getApplicationContext());
+                SQLiteDatabase db = d.getReadableDatabase();
+
+                Cursor c = db.rawQuery("SELECT * FROM STOCK WHERE PRODUCT_NAME = ?", new String[]{adap.getItem(position).getName()});
+                if (c.moveToNext()) {
+                    if (c.getInt(1) < qtt + 1) {
+                        t.setText("No queden més unitats del producte " + adap.getItem(position).getName());
+                        t.show();
+                    }
+                    else {
+                        NewOrderActivity.currentOrder.addProduct(adap.getItem(position));
+                        t.setText("Hi ha " + NewOrderActivity.currentOrder.getOrderLines().get(adap.getItem(position).getName()).getAmount() +
+                                " unitat/s del producte " + adap.getItem(position).getName() +
+                                " a la comanda");
+                        t.show();
+                    }
+                }
             }
         });
 
