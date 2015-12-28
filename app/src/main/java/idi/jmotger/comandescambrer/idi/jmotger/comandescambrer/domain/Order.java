@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Order {
 
+    String id;
     String date;
     String time;
     int table;
@@ -31,7 +32,8 @@ public class Order {
                 ol.incrAmount();
             }
         }
-        if (newLine) orderLines.put(p.getName(), new OrderLine(p));
+        if (newLine) orderLines.put(p.getName(), new OrderLine(p.getName(), p.getPrice()));
+        total += p.getPrice();
     }
 
     public HashMap<String, OrderLine> getOrderLines() {
@@ -70,6 +72,10 @@ public class Order {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    public void setId(String id) {this.id = id;}
+
+    public String getId(){ return this.id;}
 
     @Override
     public String toString() {

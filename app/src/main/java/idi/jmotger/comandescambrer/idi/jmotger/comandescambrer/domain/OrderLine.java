@@ -1,30 +1,37 @@
 package idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain;
 
+import android.util.Log;
+
 /**
  * Created by jmotger on 26/12/15.
  */
 public class OrderLine {
 
-    Product p;
+    String p;
     int amount;
+    double total;
+    double preu_unit;
 
-    public OrderLine(Product p) {
+    public OrderLine(String p, double preu_unit) {
         this.p = p;
-        amount = 1;
+        this.amount = 1;
+        this.total = preu_unit;
+        this.preu_unit = preu_unit;
     }
 
     public void incrAmount() {
+        Log.d("TAG", "INCR" );
         this.amount += 1;
+        this.total += preu_unit;
     }
 
     public void setAmount(int n) {
         this.amount = n;
+        this.total = preu_unit*(double)amount;
     }
 
-    public Product getProduct() { return this.p;}
-
     public String getProductName() {
-        return p.getName();
+        return p;
     }
 
     public int getAmount() {
@@ -41,13 +48,21 @@ public class OrderLine {
     }
 
     public double getTotal() {
-        return round((double)amount * p.getPrice(), 2);
+        return round(total, 2);
     }
 
     @Override
     public String toString() {
         double d = getTotal();
-        return p.getName() + ";" + "x " + amount + " = " + d + "€";
+        return p + ";" + "x " + amount + " = " + d + "€";
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Double getPreuUnit() {
+        return preu_unit;
     }
 
 }

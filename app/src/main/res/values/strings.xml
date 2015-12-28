@@ -43,5 +43,6 @@
     <string name="title_activity_load_firsts">Nova comanda</string>
     <string name="title_activity_order_info">Nova comanda - Resum</string>
     <string name="title_activity_order_info_from_product">OrderInfoFromProduct</string>
+    <string name="title_activity_order_info_read">OrderInfoRead</string>
 
 </resources>

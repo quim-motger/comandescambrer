@@ -131,9 +131,9 @@ public class FillOrderActivity extends AppCompatActivity {
                 } else {
                     int n = Integer.parseInt(input.getText().toString());
                     if (n == 0)
-                        NewOrderActivity.currentOrder.getOrderLines().remove(currentOrderLine.getProduct().getName());
+                        NewOrderActivity.currentOrder.getOrderLines().remove(currentOrderLine.getProductName());
                     else {
-                        NewOrderActivity.currentOrder.getOrderLines().get(currentOrderLine.getProduct().getName()).setAmount(n);
+                        NewOrderActivity.currentOrder.getOrderLines().get(currentOrderLine.getProductName()).setAmount(n);
                     }
                     reloadInfo();
                 }
@@ -205,6 +205,7 @@ public class FillOrderActivity extends AppCompatActivity {
             values.put("PRODUCT_NAME", ol.getProductName());
             values.put("QTT", ol.getAmount());
             values.put("TOTAL", ol.getTotal());
+            values.put("PREU_UNIT", ol.getPreuUnit());
             Log.d("SAVE_ORDER", "Guardem instància de " + ol.getProductName());
             db.insert("LINE_ORDER", null, values);
         }

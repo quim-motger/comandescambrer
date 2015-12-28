@@ -1,5 +1,6 @@
 package idi.jmotger.comandescambrer;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.Order;
 public class TodayCashActivity extends AppCompatActivity {
 
     List<Order> orders;
+    OrderAdapter<Order> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class TodayCashActivity extends AppCompatActivity {
         while (cc.moveToNext()) {
             Order o = new Order(cc.getString(1), cc.getString(2), cc.getInt(3));
             String id = cc.getString(0);
+            o.setId(id);
             Cursor ccc = db.rawQuery("SELECT * FROM LINE_ORDER WHERE ORDER_ID = ?", new String[]{id});
             double total = 0;
             while (ccc.moveToNext()) {
@@ -64,7 +68,7 @@ public class TodayCashActivity extends AppCompatActivity {
             orders.add(o);
         }
 
-        setTitle("Total = " + round(totalGlobal, 2) + "€");
+        setTitle("Total dia = " + round(totalGlobal, 2) + "€");
         Collections.sort(orders, new Comparator<Order>() {
             @Override
             public int compare(Order lhs, Order rhs) {
@@ -72,8 +76,18 @@ public class TodayCashActivity extends AppCompatActivity {
             }
         });
 
-        OrderAdapter<Order> adapter = new OrderAdapter<>(this, orders);
+        adapter = new OrderAdapter<>(this, orders);
         llista.setAdapter(adapter);
+        llista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), OrderInfoRead.class);
+                Order o = adapter.getItem(position);
+                intent.putExtra("ID", o.getId());
+                intent.putExtra("TOTAL", o.getTotal());
+                startActivity(intent);
+            }
+        });
     }
 
     public static double round(double value, int places) {
