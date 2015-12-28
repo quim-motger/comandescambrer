@@ -50,4 +50,12 @@ public class Order {
         return table;
     }
 
+    public double getTotal() {
+        double total = 0;
+        for (OrderLine ol : orderLines.values()) {
+            total += ol.getTotal();
+        }
+        return total;
+    }
+
 }
