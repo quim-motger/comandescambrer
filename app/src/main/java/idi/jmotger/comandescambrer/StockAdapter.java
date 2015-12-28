@@ -3,6 +3,7 @@ package idi.jmotger.comandescambrer;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +61,8 @@ public class StockAdapter extends BaseAdapter {
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(item.getImage(), 0, item.getImage().length);
         imageProduct.setImageBitmap(bitmap);
+
+
         nameProduct.setText(item.getProduct().getName() + " (" + item.getUnits() + "u)");
 
         return view;
