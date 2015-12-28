@@ -55,25 +55,20 @@ public class LoadProductsOrder extends AppCompatActivity {
 
         switch(type) {
             case "FIRST":
-                setTitle("Nova comanda - Primers plats");
+                setTitle("Primers");
                 break;
             case "SECOND":
-                setTitle("Nova comanda - Segons plats");
+                setTitle("Segons");
                 break;
             case "DRINK":
-                setTitle("Nova comanda - Begudes");
+                setTitle("Begudes");
                 break;
             case "DESSERT":
-                setTitle("Nova comanda - Postres");
+                setTitle("Postres");
                 break;
             default:
                 break;
         }
-    }
-
-    public void loadInfo() {
-        Intent intent = new Intent(this, OrderInfoFromProduct.class);
-        startActivity(intent);
     }
 
 }

@@ -81,15 +81,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="idi.jmotger.comandescambrer.FillOrderActivity" />
         </activity>
-        <activity
-            android:name=".OrderInfoFromProduct"
-            android:label="@string/title_activity_order_info_from_product"
-            android:parentActivityName=".LoadProductsOrder"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="idi.jmotger.comandescambrer.LoadProductsOrder" />
-        </activity>
     </application>
 
 </manifest>

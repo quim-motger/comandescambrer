@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:selectAllOnFocus="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="idi.jmotger.comandescambrer.FillOrderActivity"
     tools:showIn="@layout/activity_fill_order">
@@ -42,5 +43,31 @@
         android:layout_below="@+id/drinksButton"
         android:text="Postres"
         android:onClick="loadDesserts"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelProducts"
+        android:layout_below="@+id/dessertsButton"
+        android:text="Productes de la comanda"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
+        android:textSize="18dp"
+        android:textColor="#565656"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/labelProducts"
+        android:id="@+id/separator"
+        android:background="@android:color/darker_gray"/>
+
+    <ListView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/separator"
+        android:layout_marginTop="6dp"
+        android:id="@+id/llista"/>
 
 </RelativeLayout>
