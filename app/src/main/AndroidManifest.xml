@@ -93,7 +93,7 @@
         <activity
             android:name=".NewProductActivity"
             android:label="@string/title_activity_new_product"
-            android:parentActivityName=".StockLoadProducts"
+            android:parentActivityName=".StockActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
