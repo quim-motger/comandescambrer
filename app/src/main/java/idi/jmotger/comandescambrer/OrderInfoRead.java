@@ -59,7 +59,7 @@ public class OrderInfoRead extends AppCompatActivity {
             totalGlobal += cc.getDouble(3);
             orderLines.add(ol);
         }
-        setTitle("Total comanda = "+ totalGlobal + "€");
+        setTitle("Total comanda = "+ round(totalGlobal, 2) + "€");
 
 
         Collections.sort(orderLines, new Comparator<OrderLine>() {
@@ -71,6 +71,15 @@ public class OrderInfoRead extends AppCompatActivity {
         OrderLineAdapter<OrderLine> adapter = new OrderLineAdapter<>(this, orderLines);
         llista.setAdapter(adapter);
 
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 
 }
