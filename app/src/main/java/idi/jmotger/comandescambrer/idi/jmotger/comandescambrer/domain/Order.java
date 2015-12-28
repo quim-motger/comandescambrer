@@ -58,4 +58,13 @@ public class Order {
         return total;
     }
 
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Taula " + table + " (" + time + ");" + total + "€";
+    }
+
 }

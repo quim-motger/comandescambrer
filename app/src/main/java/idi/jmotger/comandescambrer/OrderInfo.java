@@ -38,6 +38,7 @@ public class OrderInfo extends AppCompatActivity {
         setContentView(R.layout.activity_order_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("Total = " + NewOrderActivity.currentOrder.getTotal() + "€");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +116,7 @@ public class OrderInfo extends AppCompatActivity {
 
     protected void reloadInfo() {
         ListView llista = (ListView) findViewById(R.id.llista);
+        setTitle("Total = " + NewOrderActivity.currentOrder.getTotal() + "€");
         orderLines = new ArrayList<>();
         for (OrderLine o : NewOrderActivity.currentOrder.getOrderLines().values()) {
             orderLines.add(o);
