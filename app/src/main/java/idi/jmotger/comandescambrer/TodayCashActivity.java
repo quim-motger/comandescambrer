@@ -50,6 +50,7 @@ public class TodayCashActivity extends AppCompatActivity {
 
         Cursor cc = db.rawQuery("SELECT * FROM ORDERS WHERE DATE = ?", new String[]{date} );
         orders = new ArrayList<>();
+        double totalGlobal = 0;
         while (cc.moveToNext()) {
             Order o = new Order(cc.getString(1), cc.getString(2), cc.getInt(3));
             String id = cc.getString(0);
@@ -58,10 +59,11 @@ public class TodayCashActivity extends AppCompatActivity {
             while (ccc.moveToNext()) {
                 total += ccc.getDouble(3);
             }
+            totalGlobal += total;
             o.setTotal(total);
             orders.add(o);
         }
-
+        setTitle("Total = " + totalGlobal + "€");
         Collections.sort(orders, new Comparator<Order>() {
             @Override
             public int compare(Order lhs, Order rhs) {
