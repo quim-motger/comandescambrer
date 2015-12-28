@@ -1,7 +1,11 @@
 package idi.jmotger.comandescambrer;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +14,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class NewProductActivity extends AppCompatActivity {
 
@@ -38,6 +45,10 @@ public class NewProductActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+    }
+
+    public void uploadImage(View view) {
+        Toast.makeText(getApplicationContext(), "Ei", Toast.LENGTH_SHORT).show();
     }
 
 }

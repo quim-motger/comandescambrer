@@ -80,7 +80,21 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/uploadImage"
+        android:layout_below="@+id/layoutTipus"
+        android:layout_marginTop="10dp">
 
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload photo"
+            android:onClick="uploadImage"/>
+
+    </LinearLayout>
 
 
 </RelativeLayout>
