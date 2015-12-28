@@ -13,7 +13,7 @@ public class Order {
     String time;
     int table;
     double total;
-    HashMap<Product, OrderLine> orderLines;
+    HashMap<String, OrderLine> orderLines;
 
     public Order(String date, String time, int table) {
         this.date = date;
@@ -24,12 +24,17 @@ public class Order {
     }
 
     public void addProduct(Product p) {
-        if (!orderLines.containsKey(p))
-            orderLines.put(p, new OrderLine(p));
-        else orderLines.get(p).incrAmount();
+        Boolean newLine = true;
+        for (OrderLine ol : orderLines.values()) {
+            if (ol.getProductName().equals(p.getName())) {
+                newLine = false;
+                ol.incrAmount();
+            }
+        }
+        if (newLine) orderLines.put(p.getName(), new OrderLine(p));
     }
 
-    public HashMap<Product, OrderLine> getOrderLines() {
+    public HashMap<String, OrderLine> getOrderLines() {
         return orderLines;
     }
 

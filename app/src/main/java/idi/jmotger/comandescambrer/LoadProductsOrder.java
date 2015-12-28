@@ -25,11 +25,10 @@ import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.OrderLine;
 public class LoadProductsOrder extends AppCompatActivity {
 
     ProductAdapter adap;
-    Order o;
+    Toast t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        o = NewOrderActivity.currentOrder;
         String type = getIntent().getExtras().getString("TYPE");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_firsts);
@@ -41,12 +40,16 @@ public class LoadProductsOrder extends AppCompatActivity {
         adap = new ProductAdapter(this, type);
         GridView gridView = (GridView) findViewById(R.id.grid);
         gridView.setAdapter(adap);
+        t = Toast.makeText(getApplicationContext(), null, Toast.LENGTH_SHORT);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                o.addProduct(adap.getItem(position));
-                Toast.makeText(getApplicationContext(), "Afegit " + adap.getItem(position).getName() + " a la comanda", Toast.LENGTH_SHORT).show();
+                NewOrderActivity.currentOrder.addProduct(adap.getItem(position));
+                t.setText("Hi ha " + NewOrderActivity.currentOrder.getOrderLines().get(adap.getItem(position).getName()).getAmount() +
+                        " unitat/s del producte " + adap.getItem(position).getName() +
+                        " a la comanda");
+                t.show();
             }
         });
 
