@@ -284,6 +284,139 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
         db.insert("PRODUCT", null, values);
         Log.d("DB", "Sopa inserted in database");
 
+        //CREMA
+        Log.d("DB", "Inserting crema");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.crema);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] crema = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Crema de verdures");
+        values.put("PRICE", "5.05");
+        values.put("TYPE", "FIRST");
+        values.put("IMAGE", crema);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Crema inserted in database");
+
+        //ALBERGINIA
+        Log.d("DB", "Inserting alberginia");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.alberginia);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] alberginia = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Albergínia farcida");
+        values.put("PRICE", "6.20");
+        values.put("TYPE", "SECOND");
+        values.put("IMAGE", alberginia);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Alberginia inserted in database");
+
+        //CAVA
+        Log.d("DB", "Inserting cava");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.cava);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] cava = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Cava");
+        values.put("PRICE", "5.25");
+        values.put("TYPE", "DRINK");
+        values.put("IMAGE", cava);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Cava inserted in database");
+
+        //COCACOLA
+        Log.d("DB", "Inserting cocacola");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.cocacola);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] cocacola = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Coca-cola");
+        values.put("PRICE", "1.70");
+        values.put("TYPE", "DRINK");
+        values.put("IMAGE", cocacola);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Cocacola inserted in database");
+
+        //CREPE
+        Log.d("DB", "Inserting crepe");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.crepe);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] crepe = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Crepe de xocolata");
+        values.put("PRICE", "4.10");
+        values.put("TYPE", "DESSERT");
+        values.put("IMAGE", crepe);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Crepe inserted in database");
+
+        //MACEDONIA
+        Log.d("DB", "Inserting macedonia");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.macedonia);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] macedonia = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Macedònia");
+        values.put("PRICE", "3.00");
+        values.put("TYPE", "DESSERT");
+        values.put("IMAGE", macedonia);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Macedonia inserted in database");
+
+        //SIPIA
+        Log.d("DB", "Inserting sipia");
+        res = this.context.getResources();
+        drawable = res.getDrawable(R.drawable.sipia);
+        bitmap = ((BitmapDrawable)drawable).getBitmap();
+        stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] sipia = stream.toByteArray();
+        Log.d("DB", "Image loaded");
+
+        values = new ContentValues();
+        values.put("NAME", "Sípia amb patates");
+        values.put("PRICE", "8.80");
+        values.put("TYPE", "SECOND");
+        values.put("IMAGE", sipia);
+
+        db.insert("PRODUCT", null, values);
+        Log.d("DB", "Sipia inserted in database");
+
 
     }
 

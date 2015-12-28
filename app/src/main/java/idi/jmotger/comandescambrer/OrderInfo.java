@@ -167,6 +167,7 @@ public class OrderInfo extends AppCompatActivity {
             Log.d("SAVE_ORDER", "Guardem instància de " + ol.getProductName());
             db.insert("LINE_ORDER", null, values);
         }
+        Log.d("SAVE_ORDER","Registrament de dades satisfactori");
     }
 
 }
