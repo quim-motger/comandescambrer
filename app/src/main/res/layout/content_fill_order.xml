@@ -13,42 +13,22 @@
     tools:context="idi.jmotger.comandescambrer.FillOrderActivity"
     tools:showIn="@layout/activity_fill_order">
 
-    <Button
-        android:id="@+id/firstsButton"
+    <GridView
+        android:id="@+id/gridButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Primers plats"
-        android:onClick="loadFirsts"/>
-
-    <Button
-        android:id="@+id/secondsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/firstsButton"
-        android:text="Segons plats"
-        android:onClick="loadSeconds"/>
-
-    <Button
-        android:id="@+id/drinksButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/secondsButton"
-        android:text="Begudes"
-        android:onClick="loadDrinks"/>
-
-    <Button
-        android:id="@+id/dessertsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/drinksButton"
-        android:text="Postres"
-        android:onClick="loadDesserts"/>
+        android:columnWidth="120dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:layout_marginBottom="6dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labelProducts"
-        android:layout_below="@+id/dessertsButton"
+        android:layout_below="@+id/gridButtons"
         android:text="Productes de la comanda"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="4dp"

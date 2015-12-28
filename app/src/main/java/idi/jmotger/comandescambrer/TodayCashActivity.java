@@ -63,7 +63,8 @@ public class TodayCashActivity extends AppCompatActivity {
             o.setTotal(total);
             orders.add(o);
         }
-        setTitle("Total = " + totalGlobal + "€");
+
+        setTitle("Total = " + round(totalGlobal, 2) + "€");
         Collections.sort(orders, new Comparator<Order>() {
             @Override
             public int compare(Order lhs, Order rhs) {
@@ -73,6 +74,15 @@ public class TodayCashActivity extends AppCompatActivity {
 
         OrderAdapter<Order> adapter = new OrderAdapter<>(this, orders);
         llista.setAdapter(adapter);
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 
 }

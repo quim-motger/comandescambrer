@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.domain.OrderLine;
 public class FillOrderActivity extends AppCompatActivity {
 
     List<OrderLine> orderLines;
+    ButtonTypeAdapter adap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,36 @@ public class FillOrderActivity extends AppCompatActivity {
                     saveOrder();
                     loadMain();
                 }
+            }
+        });
+
+        adap = new ButtonTypeAdapter(getApplicationContext());
+        GridView gridView = (GridView) findViewById(R.id.gridButtons);
+        gridView.setAdapter(adap);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Log.v("TAG", "Clicked");
+                Intent intent = new Intent(getApplicationContext(), LoadProductsOrder.class);
+                String type = adap.getItem(position);
+                switch (type) {
+                    case "PRIMERS":
+                        intent.putExtra("TYPE", "FIRST");
+                        break;
+                    case "SEGONS":
+                        intent.putExtra("TYPE", "SECOND");
+                        break;
+                    case "BEGUDES":
+                        intent.putExtra("TYPE", "DRINK");
+                        break;
+                    case "POSTRES":
+                        intent.putExtra("TYPE", "DESSERT");
+                        break;
+                    default:
+                        break;
+                }
+                startActivity(intent);
             }
         });
 
