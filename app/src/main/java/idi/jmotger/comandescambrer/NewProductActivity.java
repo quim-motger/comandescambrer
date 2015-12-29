@@ -67,7 +67,7 @@ public class NewProductActivity extends AppCompatActivity {
     public void uploadImage(View view) {
         Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
+        startActivityForResult(pickPhoto, 0);//one can be replaced with any action code
     }
 
     public void makePhoto(View view) {
@@ -75,37 +75,19 @@ public class NewProductActivity extends AppCompatActivity {
         startActivityForResult(takePicture, 0);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-        switch(requestCode) {
-            case 0:
-                if(resultCode == RESULT_OK){
-                    ImageView v = (ImageView)findViewById(R.id.loadImage);
-                    image = imageReturnedIntent.getData();
-                    v.setImageURI(image);
-                    try {
-                        InputStream iStream =   getContentResolver().openInputStream(image);
-                        loadedImage = getBytes(iStream);
-                    } catch (Exception e) {
-                        Log.e("LOAD_IMAGE", "Error while converting");
-                    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if(resultCode == RESULT_OK){
+            ImageView v = (ImageView)findViewById(R.id.loadImage);
+            image = intent.getData();
+            v.setImageURI(image);
+            try {
+                InputStream iStream =   getContentResolver().openInputStream(image);
+                loadedImage = getBytes(iStream);
+            } catch (Exception e) {
+                Log.e("LOAD_IMAGE", "Error while converting");
+            }
 
-                }
-
-                break;
-            case 1:
-                if(resultCode == RESULT_OK){
-                    ImageView v = (ImageView)findViewById(R.id.loadImage);
-                    image = imageReturnedIntent.getData();
-                    v.setImageURI(image);
-                    try {
-                        InputStream iStream =   getContentResolver().openInputStream(image);
-                        loadedImage = getBytes(iStream);
-                    } catch (Exception e) {
-                        Log.e("LOAD_IMAGE", "Error while converting");
-                    }
-                }
-                break;
         }
     }
 
