@@ -111,6 +111,9 @@ public class NewProductActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Introdueixi tots els valors", Toast.LENGTH_SHORT).show();
             return;
         }
+        else if (loadedImage == null) {
+            Toast.makeText(getApplicationContext(), "Seleccioni una imatge pel producte", Toast.LENGTH_SHORT).show();
+        }
         else {
             String n = name.getText().toString();
             Double p = Double.parseDouble(preu.getText().toString());
@@ -154,6 +157,7 @@ public class NewProductActivity extends AppCompatActivity {
             Log.d("NEW_PRODUCT", "EXITO DOBLE");
 
             Toast.makeText(getApplicationContext(), "Producte " + n + " creat satisfactòriament", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
     }
