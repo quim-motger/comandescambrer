@@ -266,44 +266,6 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
         db.insert("PRODUCT", null, values);
         Log.d("DB", "Risotto inserted in database");
 
-        //SOPA
-        Log.d("DB", "Inserting sopa");
-        res = this.context.getResources();
-        drawable = res.getDrawable(R.drawable.sopa);
-        bitmap = ((BitmapDrawable)drawable).getBitmap();
-        stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] sopa = stream.toByteArray();
-        Log.d("DB", "Image loaded");
-
-        values = new ContentValues();
-        values.put("NAME", "Sopa");
-        values.put("PRICE", "5.65");
-        values.put("TYPE", "FIRST");
-        values.put("IMAGE", sopa);
-
-        db.insert("PRODUCT", null, values);
-        Log.d("DB", "Sopa inserted in database");
-
-        //CREMA
-        Log.d("DB", "Inserting crema");
-        res = this.context.getResources();
-        drawable = res.getDrawable(R.drawable.crema);
-        bitmap = ((BitmapDrawable)drawable).getBitmap();
-        stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] crema = stream.toByteArray();
-        Log.d("DB", "Image loaded");
-
-        values = new ContentValues();
-        values.put("NAME", "Crema de verdures");
-        values.put("PRICE", "5.05");
-        values.put("TYPE", "FIRST");
-        values.put("IMAGE", crema);
-
-        db.insert("PRODUCT", null, values);
-        Log.d("DB", "Crema inserted in database");
-
         //ALBERGINIA
         Log.d("DB", "Inserting alberginia");
         res = this.context.getResources();
@@ -477,16 +439,6 @@ public class DataBaseSQLite extends SQLiteOpenHelper {
 
         values = new ContentValues();
         values.put("PRODUCT_NAME", "Risotto");
-        values.put("UNITS", 10);
-        db.insert("STOCK", null, values);
-
-        values = new ContentValues();
-        values.put("PRODUCT_NAME", "Sopa");
-        values.put("UNITS", 10);
-        db.insert("STOCK", null, values);
-
-        values = new ContentValues();
-        values.put("PRODUCT_NAME", "Crema de verdures");
         values.put("UNITS", 10);
         db.insert("STOCK", null, values);
 

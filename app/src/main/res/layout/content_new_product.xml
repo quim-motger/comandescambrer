@@ -12,33 +12,18 @@
     tools:context="idi.jmotger.comandescambrer.NewProductActivity"
     tools:showIn="@layout/activity_new_product">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tagName"
-        android:text="Nom"
-        android:textSize="16dp"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layoutName"
-        android:layout_below="@+id/tagName">
+        android:id="@+id/layoutName">
 
         <EditText
             android:id="@+id/textname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:hint="Nom del producte"/>
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutName"
-        android:id="@+id/tagPreu"
-        android:text="Preu unitari"
-        android:textSize="16dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,32 +31,42 @@
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
         android:id="@+id/layoutPreu"
-        android:layout_below="@+id/tagPreu">
+        android:layout_below="@+id/layoutName">
 
         <EditText
             android:id="@+id/textpreu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:numeric="decimal"/>
+            android:numeric="decimal"
+            android:hint="Preu unitari (€)"/>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutPreu"
-        android:id="@+id/tagTipus"
-        android:text="Tipus"
-        android:textSize="16dp"/>
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:id="@+id/layoutStock"
+        android:layout_below="@+id/layoutPreu">
+
+        <EditText
+            android:id="@+id/textstock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:numeric="integer"
+            android:hint="Stock inicial (unitats)"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layoutTipus"
-        android:layout_below="@+id/tagTipus"
+        android:layout_below="@+id/layoutStock"
         android:layout_marginTop="10dp">
-
 
         <Spinner
             android:layout_width="match_parent"
@@ -95,6 +90,12 @@
             android:onClick="uploadImage"/>
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/loadImage"
+        android:layout_below="@id/uploadImage"/>
 
 
 </RelativeLayout>

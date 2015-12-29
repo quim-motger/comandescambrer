@@ -109,5 +109,6 @@
                 android:value="idi.jmotger.comandescambrer.StockActivity" />
         </activity>
     </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>
