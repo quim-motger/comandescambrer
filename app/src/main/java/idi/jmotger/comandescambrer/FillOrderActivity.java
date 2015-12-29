@@ -34,6 +34,8 @@ public class FillOrderActivity extends AppCompatActivity {
     List<OrderLine> orderLines;
     ButtonTypeAdapter adap;
 
+    int pos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +109,29 @@ public class FillOrderActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 prompt(orderLines.get(position));
+            }
+        });
+
+        llista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(FillOrderActivity.this);
+                builder.setTitle("Eliminar producte " + orderLines.get(position).getProductName() + " de la comanda?");
+                builder.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        NewOrderActivity.currentOrder.getOrderLines().remove(orderLines.get(pos).getProductName());
+                        reloadInfo();
+                    }
+                });
+                builder.setNegativeButton("Cancela", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+                return true;
             }
         });
 

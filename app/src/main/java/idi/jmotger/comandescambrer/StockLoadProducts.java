@@ -47,6 +47,38 @@ public class StockLoadProducts extends AppCompatActivity {
             }
         });
 
+        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                editProduct = adap.getItem(position).getProduct().getName();
+                AlertDialog.Builder builder = new AlertDialog.Builder(StockLoadProducts.this);
+                builder.setTitle("Eliminar el producte " + editProduct + " de la base de dades?");
+                builder.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DataBaseSQLite d = new DataBaseSQLite(getApplicationContext());
+                        SQLiteDatabase db = d.getWritableDatabase();
+
+                        db.execSQL("DELETE FROM PRODUCT WHERE NAME = ?", new String[]{editProduct});
+                        db.execSQL("DELETE FROM STOCK WHERE PRODUCT_NAME = ?", new String[]{editProduct});
+                        loadInfo();
+
+                        Toast.makeText(getApplicationContext(), "Producte eliminat", Toast.LENGTH_SHORT).show();
+                        loadInfo();
+                    }
+                });
+                builder.setNegativeButton("Cancela", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+                return true;
+            }
+        });
+
         switch(type) {
             case "FIRST":
                 setTitle("Primers");
@@ -106,19 +138,6 @@ public class StockLoadProducts extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
-            }
-        });
-        builder.setNeutralButton("Elimina", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                DataBaseSQLite d = new DataBaseSQLite(getApplicationContext());
-                SQLiteDatabase db = d.getWritableDatabase();
-
-                db.execSQL("DELETE FROM PRODUCT WHERE NAME = ?", new String[]{editProduct});
-                db.execSQL("DELETE FROM STOCK WHERE PRODUCT_NAME = ?", new String[]{editProduct});
-                loadInfo();
-
-                Toast.makeText(getApplicationContext(), "Producte eliminat", Toast.LENGTH_SHORT).show();
             }
         });
         builder.show();
