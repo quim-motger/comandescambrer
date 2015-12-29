@@ -70,6 +70,11 @@ public class NewProductActivity extends AppCompatActivity {
         startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
     }
 
+    public void makePhoto(View view) {
+        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(takePicture, 0);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         switch(requestCode) {

@@ -21,7 +21,7 @@
             android:id="@+id/textname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:hint="Nom del producte"/>
     </LinearLayout>
 
@@ -37,7 +37,7 @@
             android:id="@+id/textpreu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:numeric="decimal"
             android:hint="Preu unitari (€)"/>
 
@@ -55,7 +55,7 @@
             android:id="@+id/textstock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:numeric="integer"
             android:hint="Stock inicial (unitats)"/>
 
@@ -64,39 +64,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layoutTipus"
-        android:layout_below="@+id/layoutStock"
-        android:layout_marginTop="10dp">
+        android:orientation="horizontal"
+        android:layout_below="@+id/layoutStock">
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinnerType" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/uploadImage"
-        android:layout_below="@+id/layoutTipus"
-        android:layout_marginTop="10dp">
-
-
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/uploadButton"
-            android:text="Upload photo"
-            android:onClick="uploadImage"/>
+            android:id="@+id/uploadImage"
+            android:layout_below="@+id/layoutTipus"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerType" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/uploadButton"
+                    android:text="G"
+                    android:onClick="uploadImage"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/photoButton"
+                    android:text="C"
+                    android:onClick="makePhoto"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/loadImage"
-            android:layout_marginLeft="18dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="52dp"
+            android:layout_gravity="right"
+            />
 
     </LinearLayout>
-
 
 
 
