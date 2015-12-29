@@ -50,4 +50,6 @@ public class ProductRepository {
         return products.size();
     }
 
+    public List<Product> getProducts() { return products;}
+
 }
