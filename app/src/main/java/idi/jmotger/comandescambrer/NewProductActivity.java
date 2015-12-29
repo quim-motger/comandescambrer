@@ -33,6 +33,7 @@ public class NewProductActivity extends AppCompatActivity {
 
     ButtonTypeAdapter adap;
     byte[] loadedImage;
+    Uri image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,11 @@ public class NewProductActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.product_type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        if (image != null) {
+            Log.d("TAG", "Image not lost");
+            ImageView v = (ImageView)findViewById(R.id.loadImage);
+            v.setImageURI(image);
+        }
 
     }
 
@@ -70,10 +76,10 @@ public class NewProductActivity extends AppCompatActivity {
             case 0:
                 if(resultCode == RESULT_OK){
                     ImageView v = (ImageView)findViewById(R.id.loadImage);
-                    Uri img = imageReturnedIntent.getData();
-                    v.setImageURI(img);
+                    image = imageReturnedIntent.getData();
+                    v.setImageURI(image);
                     try {
-                        InputStream iStream =   getContentResolver().openInputStream(img);
+                        InputStream iStream =   getContentResolver().openInputStream(image);
                         loadedImage = getBytes(iStream);
                     } catch (Exception e) {
                         Log.e("LOAD_IMAGE", "Error while converting");
@@ -85,10 +91,10 @@ public class NewProductActivity extends AppCompatActivity {
             case 1:
                 if(resultCode == RESULT_OK){
                     ImageView v = (ImageView)findViewById(R.id.loadImage);
-                    Uri img = imageReturnedIntent.getData();
-                    v.setImageURI(img);
+                    image = imageReturnedIntent.getData();
+                    v.setImageURI(image);
                     try {
-                        InputStream iStream =   getContentResolver().openInputStream(img);
+                        InputStream iStream =   getContentResolver().openInputStream(image);
                         loadedImage = getBytes(iStream);
                     } catch (Exception e) {
                         Log.e("LOAD_IMAGE", "Error while converting");
