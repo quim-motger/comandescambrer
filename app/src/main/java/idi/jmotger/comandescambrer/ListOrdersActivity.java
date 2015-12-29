@@ -16,6 +16,11 @@ public class ListOrdersActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        String date1 = getIntent().getExtras().getString("DATE1");
+        String date2 = getIntent().getExtras().getString("DATE2");
+
+        setTitle(date1 + " - " + date2);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
