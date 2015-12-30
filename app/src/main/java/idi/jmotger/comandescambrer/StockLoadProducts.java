@@ -53,7 +53,7 @@ public class StockLoadProducts extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 editProduct = adap.getItem(position).getProduct().getName();
                 AlertDialog.Builder builder = new AlertDialog.Builder(StockLoadProducts.this);
-                builder.setTitle("Eliminar el producte " + editProduct + " de la base de dades?");
+                builder.setTitle("Eliminar el producte " + editProduct + "?");
                 builder.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
