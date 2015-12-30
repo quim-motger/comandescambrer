@@ -85,10 +85,11 @@ public class ListOrdersActivity extends AppCompatActivity {
                 }
                 totalGlobal += total;
                 o.setTotal(total);
+                o.setId(s);
                 orders.add(o);
             }
         }
-        setTitle("Total = " + totalGlobal + "€");
+        setTitle("Total = " + round(totalGlobal,2) + "€");
     }
 
     protected Calendar toDate(String date) {
@@ -99,6 +100,15 @@ public class ListOrdersActivity extends AppCompatActivity {
         c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(info[0]));
 
         return c;
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 
 }
