@@ -46,7 +46,11 @@ public class ListOrdersActivity extends AppCompatActivity {
             @Override
             public int compare(Order lhs, Order rhs) {
                 if (lhs.getDate().equals(rhs.getDate())) {
-                    return lhs.getTime().compareTo(rhs.getTime());
+                    if (lhs.getTime().equals(rhs.getTime())) {
+                        if (lhs.getTable() < rhs.getTable()) return -1;
+                        else return 1;
+                    }
+                    else return lhs.getTime().compareTo(rhs.getTime());
                 }
                 else {
                     return lhs.getDate().compareTo(rhs.getDate());

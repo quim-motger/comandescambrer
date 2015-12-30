@@ -72,7 +72,11 @@ public class TodayCashActivity extends AppCompatActivity {
         Collections.sort(orders, new Comparator<Order>() {
             @Override
             public int compare(Order lhs, Order rhs) {
-                return lhs.getTime().compareTo(rhs.getTime());
+                if (lhs.getTime().equals(rhs.getTime())) {
+                    if (lhs.getTable() < rhs.getTable()) return -1;
+                    else return 1;
+                }
+                else return lhs.getTime().compareTo(rhs.getTime());
             }
         });
 

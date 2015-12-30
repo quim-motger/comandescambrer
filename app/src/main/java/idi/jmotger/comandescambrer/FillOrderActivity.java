@@ -143,7 +143,7 @@ public class FillOrderActivity extends AppCompatActivity {
     protected void prompt(OrderLine ol) {
         currentOrderLine = ol;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Total =" + currentOrderLine.getTotal() + "€");
+        builder.setTitle(currentOrderLine.getProductName());
         final EditText input = new EditText(this);
         input.setText(String.valueOf(ol.getAmount()));
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
