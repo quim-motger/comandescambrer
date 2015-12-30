@@ -132,6 +132,7 @@ public class StockLoadProducts extends AppCompatActivity {
 
                     db.execSQL("UPDATE STOCK SET UNITS = ? WHERE PRODUCT_NAME = ?", new String[]{units, editProduct});
 
+                    Toast.makeText(getApplicationContext(), "Stock modificat", Toast.LENGTH_SHORT).show();
                     loadInfo();
                 }
             }

@@ -99,7 +99,7 @@ public class NewOrderActivity extends AppCompatActivity {
         String t = time.getText().toString();
         String table = spinner.getSelectedItem().toString();
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Comanda iniciada el dia " + d + " a les " + t + " a la taula " + table, Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Comanda iniciada el dia " + d + " a les " + t + " a la taula " + table, Toast.LENGTH_LONG);
         toast.show();
 
         currentOrder = new Order(d, t, Integer.parseInt(table));
