@@ -12,41 +12,16 @@
     tools:context="idi.jmotger.comandescambrer.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <Button
+    <GridView
+        android:id="@+id/gridMainButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/nova_comanda"
-        android:id="@+id/newOrderButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="newOrder"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/newOrderButton"
-        android:text="@string/today_cash"
-        android:id="@+id/todayCashButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="todayCash"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/todayCashButton"
-        android:text="@string/list_orders"
-        android:id="@+id/listOrdersButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="listOrders"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/listOrdersButton"
-        android:text="@string/stock"
-        android:id="@+id/stockButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="stock"/>
+        android:layout_height="match_parent"
+        android:columnWidth="120dp"
+        android:horizontalSpacing="16dp"
+        android:verticalSpacing="16dp"
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:layout_marginBottom="6dp"/>
 
 
 </RelativeLayout>

@@ -14,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -22,6 +24,8 @@ import java.util.Calendar;
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
 
 public class MainActivity extends AppCompatActivity {
+
+    MainButtonTypeAdapter adap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,38 @@ public class MainActivity extends AppCompatActivity {
 
         DataBaseSQLite d = new DataBaseSQLite(this);
         SQLiteDatabase db = d.getReadableDatabase();
+
+        adap = new MainButtonTypeAdapter(MainActivity.this);
+        GridView gridView = (GridView) findViewById(R.id.gridMainButton);
+        gridView.setAdapter(adap);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s = adap.getItem(position);
+                Intent intent;
+                switch (s) {
+                    case "NOVA COMANDA":
+                        intent = new Intent(getApplicationContext(), NewOrderActivity.class);
+                        startActivity(intent);
+                        break;
+                    case "CAIXA DEL DIA":
+                        intent = new Intent(getApplicationContext(), TodayCashActivity.class);
+                        startActivity(intent);
+                        break;
+                    case "COMANDES PER DATES":
+                        init = true;
+                        showDialog(0);
+                        break;
+                    case "STOCK":
+                        intent = new Intent(getApplicationContext(), StockActivity.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     @Override
