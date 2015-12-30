@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void listOrders(View view) {
+        init = true;
         showDialog(0);
         /*Intent intent = new Intent(this, ListOrdersActivity.class);
         startActivity(intent);*/
@@ -94,8 +95,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    String date1;
-    String date2;
+    static String date1 = "";
+    static String date2 = "";
+    static boolean init;
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
         if (id == 0) {
+            date2 = "";
             MyDatePickerDialog d = new MyDatePickerDialog(this, firstDate, year, month, day);
             d.setPermanentTitle("Primera data");
             return d;
@@ -119,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             cc.set(Calendar.YEAR, Integer.parseInt(info[2]));
             cc.set(Calendar.MONTH, Integer.parseInt(info[1])-1);
             cc.set(Calendar.DAY_OF_MONTH, Integer.parseInt(info[0]));
-            d.getDatePicker().setMinDate(cc.getTimeInMillis() -10);
+            d.getDatePicker().setMinDate(cc.getTimeInMillis() -1000);
             d.setPermanentTitle("Segona data");
             return d;
         }
@@ -129,11 +132,16 @@ public class MainActivity extends AppCompatActivity {
     private MyDatePickerDialog.OnDateSetListener secondDate = new MyDatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            date2 = arg3 + "/" + (arg2+1) + "/" + arg1;
-            Intent intent = new Intent(MainActivity.this, ListOrdersActivity.class);
-            ListOrdersActivity.date1 = date1;
-            ListOrdersActivity.date2 = date2;
-            startActivity(intent);
+            if( ! MainActivity.this.isChangingConfigurations() ) {
+                date2 = arg3 + "/" + (arg2 + 1) + "/" + arg1;
+                if (init) {
+                    init = false;
+                    Intent intent = new Intent(MainActivity.this, ListOrdersActivity.class);
+                    ListOrdersActivity.date1 = date1;
+                    ListOrdersActivity.date2 = date2;
+                    startActivity(intent);
+                }
+            }
         }
     };
 

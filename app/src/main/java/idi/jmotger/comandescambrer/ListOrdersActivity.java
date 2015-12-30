@@ -113,6 +113,7 @@ public class ListOrdersActivity extends AppCompatActivity {
 
     protected Calendar toDate(String date) {
         Calendar c = Calendar.getInstance();
+        Log.d("DATE", date);
         String[] info = date.split("/");
         c.set(Calendar.YEAR, Integer.parseInt(info[2]));
         c.set(Calendar.MONTH, Integer.parseInt(info[1]) - 1);
