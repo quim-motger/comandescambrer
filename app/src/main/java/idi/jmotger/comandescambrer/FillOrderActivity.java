@@ -116,7 +116,8 @@ public class FillOrderActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(FillOrderActivity.this);
-                builder.setTitle("Eliminar producte " + orderLines.get(position).getProductName() + " de la comanda?");
+                builder.setTitle("Eliminar producte");
+                builder.setMessage("Estàs segur que vols eliminar el producte " + orderLines.get(position).getProductName() + " de la comanda?");
                 builder.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -142,7 +143,7 @@ public class FillOrderActivity extends AppCompatActivity {
     protected void prompt(OrderLine ol) {
         currentOrderLine = ol;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Quantitat");
+        builder.setTitle(currentOrderLine.getProductName());
         final EditText input = new EditText(this);
         input.setText(String.valueOf(ol.getAmount()));
         input.setInputType(InputType.TYPE_CLASS_NUMBER);

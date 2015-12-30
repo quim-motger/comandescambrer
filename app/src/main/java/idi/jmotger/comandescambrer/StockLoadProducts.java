@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
@@ -53,7 +54,8 @@ public class StockLoadProducts extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 editProduct = adap.getItem(position).getProduct().getName();
                 AlertDialog.Builder builder = new AlertDialog.Builder(StockLoadProducts.this);
-                builder.setTitle("Eliminar el producte " + editProduct + "?");
+                builder.setTitle("Eliminar producte");
+                builder.setMessage("Estàs segur que vols eliminar el producte " + editProduct + " de la base de dades?");
                 builder.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

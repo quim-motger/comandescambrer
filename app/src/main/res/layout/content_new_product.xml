@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:hint="Nom del producte"
-            android:maxLength="70"/>
+            android:maxLength="60"/>
     </LinearLayout>
 
     <LinearLayout
