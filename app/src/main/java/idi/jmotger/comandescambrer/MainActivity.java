@@ -117,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
             date2 = arg3 + "/" + (arg2+1) + "/" + arg1;
             Intent intent = new Intent(MainActivity.this, ListOrdersActivity.class);
-            intent.putExtra("DATE1", date1);
-            intent.putExtra("DATE2", date2);
+            ListOrdersActivity.date1 = date1;
+            ListOrdersActivity.date2 = date2;
             startActivity(intent);
         }
     };
