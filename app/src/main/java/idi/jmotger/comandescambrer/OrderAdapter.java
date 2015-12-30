@@ -14,8 +14,15 @@ import java.util.List;
  */
 public class OrderAdapter<Order> extends ArrayAdapter<Order> {
 
+    List<String> dates;
+
     public OrderAdapter(Context context, List<Order> objects) {
         super(context, 0, objects);
+    }
+
+    public OrderAdapter(Context context, List<Order> objects, List<String> dates) {
+        super(context, 0, objects);
+        this.dates = dates;
     }
 
     @Override
@@ -35,7 +42,12 @@ public class OrderAdapter<Order> extends ArrayAdapter<Order> {
 
         String[] split = item.toString().split(";");
 
-        productName.setText(split[0]);
+        if (dates == null)
+            productName.setText(split[0]);
+        else {
+            String[] info = split[0].split("\\(");
+            productName.setText(info[0] + "(" + dates.get(position) + ", " + info[1]);
+        }
         qttXprice.setText(split[1]);
 
         return listItemView;

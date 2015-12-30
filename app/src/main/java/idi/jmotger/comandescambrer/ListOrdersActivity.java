@@ -40,7 +40,12 @@ public class ListOrdersActivity extends AppCompatActivity {
 
         fillOrders(date1, date2);
 
-        adapter = new OrderAdapter<>(this, orders);
+        List<String> dates = new ArrayList<>();
+        for (Order o: orders) {
+            dates.add(o.getDate());
+        }
+
+        adapter = new OrderAdapter<>(this, orders, dates);
         llista.setAdapter(adapter);
 
         llista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
