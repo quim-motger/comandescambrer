@@ -15,6 +15,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import idi.jmotger.comandescambrer.idi.jmotger.comandescambrer.database.DataBaseSQLite;
@@ -39,6 +41,18 @@ public class ListOrdersActivity extends AppCompatActivity {
         ListView llista = (ListView) findViewById(R.id.llistaOrders);
 
         fillOrders(date1, date2);
+
+        Collections.sort(orders, new Comparator<Order>() {
+            @Override
+            public int compare(Order lhs, Order rhs) {
+                if (lhs.getDate().equals(rhs.getDate())) {
+                    return lhs.getTime().compareTo(rhs.getTime());
+                }
+                else {
+                    return lhs.getDate().compareTo(rhs.getDate());
+                }
+            }
+        });
 
         List<String> dates = new ArrayList<>();
         for (Order o: orders) {
