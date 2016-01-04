@@ -85,14 +85,5 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layoutTable"
-        android:text="Inicia comanda"
-        android:layout_marginTop="10dp"
-        android:onClick="startOrder"
-        android:layout_alignParentRight="true"/>
-
 
 </RelativeLayout>

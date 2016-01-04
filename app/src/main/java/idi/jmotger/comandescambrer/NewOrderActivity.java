@@ -30,6 +30,7 @@ public class NewOrderActivity extends AppCompatActivity {
 
     public void onStart() {
         super.onStart();
+
         //Configure date
         EditText textDate = (EditText)findViewById(R.id.textdate);
         textDate.clearFocus();
@@ -87,6 +88,14 @@ public class NewOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_order);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startOrder(view);
+            }
+        });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

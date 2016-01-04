@@ -69,6 +69,7 @@ public class StockAdapter extends BaseAdapter {
                 int width = bitmap.getWidth();
                 int height = bitmap.getHeight();
                 int s = width/300;
+                if (s == 0) s = 1;
                 width = width/(s);
                 height = height/(s);
 
