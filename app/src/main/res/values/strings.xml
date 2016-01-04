@@ -1,19 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">WaiterBook</string>
-    <string name="action_settings">Configuració</string>
-
-
+    <string name="action_settings">About</string>
     <string name="title_activity_new_order">Nova comanda</string>
     <string name="title_activity_today_cash">Caixa del dia</string>
     <string name="title_activity_list_orders">Llistat de comandes</string>
     <string name="title_activity_stock">Stock</string>
-
     <string name="nova_comanda">Nova comanda</string>
     <string name="today_cash">Caixa del dia</string>
     <string name="list_orders">Comandes per dates</string>
     <string name="stock">Stock</string>
-
-
     <string name="no_existing_product">No existeix el producte</string>
 
     <string-array name="table_number">
@@ -38,7 +35,6 @@
         <item>19</item>
         <item>20</item>
     </string-array>
-
     <string-array name="product_type">
         <item>Primer</item>
         <item>Segon</item>
@@ -55,5 +51,8 @@
     <string name="title_activity_new_product">NewProductActivity</string>
     <string name="title_activity_stock_load_products">StockLoadProducts</string>
     <string name="title_activity_order_info_read_date">OrderInfoReadDate</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="about_introduccio">WaiterBook és una aplicació orientada a la restauració, amb l\'objectiu d\'oferir als usuaris d\'aquest món un sistema de comandes i gestió d\'stock còmode i eficaç</string>
 
 </resources>

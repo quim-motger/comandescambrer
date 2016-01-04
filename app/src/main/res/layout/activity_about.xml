@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="idi.jmotger.comandescambrer.AboutActivity">
+
+    <TextView android:text="@string/about_introduccio" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/introduccio" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/one"
+        android:orientation="horizontal"
+        android:layout_below="@+id/introduccio"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/waiter"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="L'opció 'Nova comanda' permetrà als cambrers realitzar una comanda des de zero, afegint productes individualment, per quantitats, modificant-ne les dades en qualsevol moment, etc."/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/two"
+        android:orientation="horizontal"
+        android:layout_below="@+id/one"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/cash"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="L'opció 'Caixa del dia' ofereix consulta directa a totes les comandes realitzades durant el dia en curs, així com informació dels productes demanats a cada comanda, la quantitat i el cost total"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/three"
+        android:orientation="horizontal"
+        android:layout_below="@+id/two"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/calendar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="L'opció 'Llistat comandes' ofereix una consulta personalitzada mitjançant la selecció d'un interval entre dues dates, obtenint com a resultat totes les comandes realitzades durant aquest període, amb tota la seva informació"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/four"
+        android:orientation="horizontal"
+        android:layout_below="@+id/three"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/stock"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="L'opció 'Stock' permet obtenir i modificar la informació de l'stock dels productes del bar/restaurant, així com l'alta de nous productes i l'eliminació de productes ja existents"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
