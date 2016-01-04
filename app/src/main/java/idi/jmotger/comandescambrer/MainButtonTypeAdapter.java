@@ -69,7 +69,6 @@ public class MainButtonTypeAdapter extends BaseAdapter {
         ImageView v = (ImageView) view.findViewById(R.id.imageIcon);
         TextView t = (TextView) view.findViewById(R.id.textIcon);
 
-        Bitmap icon = null;
         switch(getItem(position)) {
             case "NOVA COMANDA":
                 v.setImageResource(R.drawable.waiter);

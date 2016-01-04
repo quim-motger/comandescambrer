@@ -162,6 +162,10 @@ public class FillOrderActivity extends AppCompatActivity {
                     int n = Integer.parseInt(input.getText().toString());
                     if (n == 0)
                         NewOrderActivity.currentOrder.getOrderLines().remove(currentOrderLine.getProductName());
+                    else if (n > 999999) {
+                        Toast.makeText(getApplicationContext(), "No està permés establir quantitats superiors a 999999", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     else {
                         if (c.moveToNext()) {
                             if (c.getInt(1) < n)

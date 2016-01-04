@@ -10,8 +10,7 @@
         android:layout_height="match_parent"
         android:transitionName="transition"
         android:adjustViewBounds="true"
-        android:padding="20dp"
-        android:paddingTop="50dp"
+        android:padding="30dp"
         android:scaleType="fitCenter"/>
 
     <TextView
