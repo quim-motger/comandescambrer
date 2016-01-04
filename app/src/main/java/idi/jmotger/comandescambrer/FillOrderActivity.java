@@ -172,6 +172,7 @@ public class FillOrderActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "No hi ha suficients unitats del producte " + currentOrderLine.getProductName() + " (disponibles " + c.getInt(1) + ")", Toast.LENGTH_SHORT).show();
                             else {
                                 NewOrderActivity.currentOrder.getOrderLines().get(currentOrderLine.getProductName()).setAmount(n);
+                                Toast.makeText(getApplicationContext(), "Quantitat modificada", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
